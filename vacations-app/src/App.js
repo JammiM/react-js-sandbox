@@ -2,8 +2,8 @@ import { react, useEffect, useState } from "react";
 import Loading from "./Loading";
 import Tours from "./Tours";
 import "./App.css";
-//const url = "https://www.course-api.com/react-tours-project";
-const url = "https://api.jsonbin.io/v3/qs/667352c3e41b4d34e405d0cc";
+const url = "https://www.course-api.com/react-tours-project";
+// const url = "https://api.jsonbin.io/v3/qs/667352c3e41b4d34e405d0cc";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ function App() {
       const response = await fetch(url);
       const tours = await response.json();
       setLoading(false);
-      setTours(tours.record);
+      setTours(tours);
     } catch (error) {
       setLoading(true);
       console.log(error);
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <main>
-      <Tours />
+      <Tours tours={tours} />
     </main>
   );
 }
